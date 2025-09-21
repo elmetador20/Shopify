@@ -5,9 +5,14 @@ import AllItems from './AllItems'
 import LowStock from './LowStock'
 import CreateScreen from './createScreen' 
 
+  
+
+
 const HomeScreen = () => {
-   const data=
-    [
+   
+   const [view, setview] = useState(0)
+   const [data, setdata] = useState([
+      
   {
     id:1,
     name: "iPhone 14",
@@ -69,16 +74,14 @@ const HomeScreen = () => {
     price: 48000
   }
 ]
-
-   
-   
-  const [view, setview] = useState(0)
+   )
+  
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Dashboard</Text>
       <View style={styles.btncontainer}>
         <Pressable style={[styles.btn,view===0?{backgroundColor:"slateblue"}:null]} onPress={()=>setview(0)}>
-          <Text style={styles.btntxt}>All items</Text>
+          <Text style={[styles.btntxt,view===0?{color:"white"}:null]}>All items</Text>
         </Pressable>
         <Pressable style={[styles.btn,view===1?{backgroundColor:"slateblue"}:null]} onPress={()=>setview(1)}>
           <Text style={[styles.btntxt,view===1?{color:"white"}:null]}>Low stock</Text>
@@ -88,8 +91,8 @@ const HomeScreen = () => {
         </Pressable>
       </View>
       {view===0 &&<AllItems data={data}/>}
-      {view===1 &&<LowStock/>}
-      {view===2 &&<CreateScreen/>}
+      {view===1 &&<AllItems data={data.filter((item)=> item.stock<15)}/>}
+      {view===2 &&<CreateScreen  data={data} setdata={setdata}/>}
     </View>
   )
 }
@@ -101,14 +104,20 @@ const styles = StyleSheet.create({
     padding: "10%",
     width: '100%',
     height: '100%',
-    backgroundColor: 'grey',
+    backgroundColor: 'white',
     marginBottom:"10%"
 
   },
   text: {
-    fontSize: 25,
+    fontSize: 20,
+    fontWeight:"bold",
     alignItems: 'center',
-    color: 'blue',
+    color: 'white',
+    backgroundColor:'orange',
+    marginVertical:20,
+    border:"red",
+    borderRadius:20,
+    padding:10
     
   },
   btncontainer: {
@@ -121,13 +130,14 @@ const styles = StyleSheet.create({
     paddingveritcle: 4,
     paddingHorizontal: 10,
     borderRadius:50,
-    borderWidth:0.8,
-    borderColor: "red",
+    borderWidth:1.8,
+    borderColor: "grey",
     mouseCursor:"pointer"
 
   },
   btntxt:{
-    color:"yellow",
+    color:"Blue",
+  
     fontWeight:"500",
     fonysize:12,
     gap:20,

@@ -49,30 +49,7 @@ const HomeScreen = () => {
     stock: 18,
     price: 42000
   },
-  {
-    id:7,
-    name: "Vivo X90 Pro",
-    stock: 22,
-    price: 63000
-  },
-  {
-    id:8,
-    name: "Oppo Find X6",
-    stock: 12,
-    price: 58000
-  },
-  {
-    id:9,
-    name: "Asus ROG Phone 7",
-    stock: 8,
-    price: 72000
-  },
-  {
-    id:10,
-    name: "Nothing Phone (2)",
-    stock: 16,
-    price: 48000
-  }
+  
 ]
    )
   

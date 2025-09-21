@@ -12,6 +12,8 @@ const createScreen = ({data,setdata}) => {
       stock:stockAmt
     }
     setdata([...data, newItem])
+    setitemName('')
+    setstockAmt("")
 
   }
   return (
